@@ -14,8 +14,9 @@ def index():
 
     starts = json.dumps(NYTarticles.most_viewed(days=1), default=str)
     loads = json.loads(starts)
-    titles = loads[0]['title']
-    urls = loads[0]['url']
-    articles = loads[0]['abstract']
-    photos = loads[x]['media'][0]['media-metadata'][0]['url']
-    return flask.render_template("index.html",articles=articles, titles=titles, link=urls, images=photos)
+    name = "aksa"
+    titles = [loads[x]['title'] for x in range(9)]
+    links = [loads[x]['url'] for x in range(9)]
+    articles = [loads[x]['abstract'] for x in range(9)]
+    photos = [loads[x]['media'][0]['media-metadata'][0]['url'] for x in range(9)]
+    return flask.render_template("index.html",name=name,articles=articles, titles=titles, images=photos, links=links )
