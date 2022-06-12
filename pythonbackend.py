@@ -1,12 +1,21 @@
 import flask
 import pynytimes
 import os
-NYTarticles = pynytimes.NYTAPI("yVgnCb76kweCdxaPGcQcBPNNJo2yU8YH",parse_dates=True)
+import json
+
+NYTarticles = pynytimes.NYTAPI(os.environ.get('NYTIMES_KEY'),parse_dates=True)
 
 app = flask.Flask(__name__)
 
 @app.route("/")
 def index():
-    articles = NYTarticles.most_viewed(days=7)
+
+    x = 0
+
+    starts = json.dumps(NYTarticles.most_viewed(days=1), default=str)
+    loads = json.loads(starts)
     name = "aksa"
-    return flask.render_template("index.html",name=name,articles=articles )
+    titles = [loads[x]['title'] for x in range(9)]
+   # link = [loads[x]['url'] for x in range(9)]
+    articles = [loads[x]['abstract'] for x in range(9)]
+    return flask.render_template("index.html",name=name,articles=articles, titles=titles )
