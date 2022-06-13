@@ -7,3 +7,7 @@ how to run and build
 3. activate with ``` . <name of environment>/bin/activate ``` (linux) or ```<name of environment>\Scripts\activate```(windows)
 4. clone the repository https://github.com/Pro-Cr4stinate/NYTimes
 5. run with ```flask run```
+
+For environtment, you can add another environtment setting for the API Key
+``` set NYTIMES_KEY=yVgnCb76kweCdxaPGcQcBPNNJo2yU8YH ``` for windows or
+``` export NYTIMES_KEY=yVgnCb76kweCdxaPGcQcBPNNJo2yU8YH``` for linux
